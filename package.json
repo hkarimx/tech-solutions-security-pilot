@@ -1,0 +1,17 @@
+{
+  "name": "tech-solutions-security-pilot",
+  "version": "1.0.0",
+  "main": "server.cjs",
+  "scripts": {
+    "start": "node server.cjs",
+    "dev": "nodemon server.cjs",
+    "audit:high": "npm audit --audit-level=high",
+    "test": "node -e \"console.log('ok')\""
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
