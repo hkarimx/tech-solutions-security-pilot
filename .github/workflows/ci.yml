@@ -1,0 +1,27 @@
+name: CI - Security Gate
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  security-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install deps (clean)
+        run: npm ci
+
+      - name: npm audit (fail on high)
+        run: npm audit --audit-level=high
+
+      - name: Smoke test
+        run: npm test
